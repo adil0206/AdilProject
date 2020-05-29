@@ -33,6 +33,7 @@ public class EditServlet extends HttpServlet {
 			String about=request.getParameter("user_about");
 			Part part=request.getPart("user_profile");
 			String profileName=part.getSubmittedFileName();
+			
 			//get the user from the session
 			HttpSession ses=request.getSession();
 			User user=(User)ses.getAttribute("currentUser");
@@ -45,11 +46,13 @@ public class EditServlet extends HttpServlet {
 			
 			//update details
 			UserDao dao=new UserDao(ConnectionProvider.getConnection());
-			boolean bool = dao.updateDatails(user);
-			if(bool) {
+			boolean ans = dao.updateDatails(user);
+			if(ans) {
 				
-				String path=request.getRealPath("/")+"img"+File.separator+user.getProfile();
-				String pathOldFile=request.getRealPath("/")+"img"+File.separator+oldFile;
+				@SuppressWarnings("deprecation")
+				String path=request.getRealPath("/")+"img"+File.pathSeparator+user.getProfile();
+				@SuppressWarnings("deprecation")
+				String pathOldFile=request.getRealPath("/")+"img"+File.pathSeparator+oldFile;
 				Helper.deleteProfile(pathOldFile);
 				if(Helper.saveProfile(part.getInputStream(), path)){
 					Message msg=new Message("Update your Details", "success", "alert-success");
