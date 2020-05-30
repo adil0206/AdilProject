@@ -10,7 +10,8 @@ public class Post {
 	private String code;
 	private String pic;
 	private Timestamp pDate;
-	private String cid;
+	private int cid;
+	private int userId;
 	
 	public Post() {
 		super();
@@ -18,7 +19,7 @@ public class Post {
 	}
 
 	public Post(int pid, String pName, String pTitle, String pContent, String code, String pic, Timestamp pDate,
-			String cid) {
+			int cid,int userId) {
 		super();
 		this.pid = pid;
 		this.pName = pName;
@@ -28,9 +29,11 @@ public class Post {
 		this.pic = pic;
 		this.pDate = pDate;
 		this.cid = cid;
+		this.userId=userId;
+		
 	}
 
-	public Post(String pName, String pTitle, String pContent, String code, String pic, Timestamp pDate, String cid) {
+	public Post(String pName, String pTitle, String pContent, String code, String pic, Timestamp pDate, int cid,int userId) {
 		super();
 		this.pName = pName;
 		this.pTitle = pTitle;
@@ -39,6 +42,7 @@ public class Post {
 		this.pic = pic;
 		this.pDate = pDate;
 		this.cid = cid;
+		this.userId=userId;
 	}
 
 	public int getPid() {
@@ -97,12 +101,20 @@ public class Post {
 		this.pDate = pDate;
 	}
 
-	public String getCid() {
+	public int getCid() {
 		return cid;
 	}
 
-	public void setCid(String cid) {
+	public void setCid(int cid) {
 		this.cid = cid;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
 }

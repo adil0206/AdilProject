@@ -50,9 +50,9 @@ public class EditServlet extends HttpServlet {
 			if(ans) {
 				
 				@SuppressWarnings("deprecation")
-				String path=request.getRealPath("/")+"img"+File.pathSeparator+user.getProfile();
+				String path=request.getRealPath("/")+"img"+File.separator+user.getProfile();
 				@SuppressWarnings("deprecation")
-				String pathOldFile=request.getRealPath("/")+"img"+File.pathSeparator+oldFile;
+				String pathOldFile=request.getRealPath("/")+"img"+File.separator+oldFile;
 				Helper.deleteProfile(pathOldFile);
 				if(Helper.saveProfile(part.getInputStream(), path)){
 					Message msg=new Message("Update your Details", "success", "alert-success");
